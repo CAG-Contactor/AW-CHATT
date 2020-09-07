@@ -1,0 +1,26 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/aw-chatt-frontend/node_modules
+/aw-chatt-frontend/.pnp
+/aw-chatt-frontend/.pnp.js
+
+# testing
+/aw-chatt-frontend/coverage
+
+# production
+/aw-chatt-frontend/build
+
+# misc
+/aw-chatt-frontend/.DS_Store
+/aw-chatt-frontend/.env.local
+/aw-chatt-frontend/.env.development.local
+/aw-chatt-frontend/.env.test.local
+/aw-chatt-frontend/.env.production.local
+**/*.iml
+
+/aw-chatt-frontend/npm-debug.log*
+/aw-chatt-frontend/yarn-debug.log*
+/aw-chatt-frontend/yarn-error.log*
+
+/.idea/
