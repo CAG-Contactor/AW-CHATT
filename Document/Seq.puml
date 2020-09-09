@@ -1,0 +1,10 @@
+@startuml
+Frontend -> Backend: Login('username')
+Backend --> Frontend: login Response
+
+Frontend -> Backend: getAllUserPositions()
+Frontend <-- Backend: All logged in users getAllUserPositions
+
+Frontend -> Backend: updatePosition('username', pos)
+Frontend <-- Backend: updatePosition response
+@enduml
