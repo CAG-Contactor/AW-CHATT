@@ -13,12 +13,10 @@ class App extends Component {
         var scene = new THREE.Scene();
         var renderer = new THREE.WebGLRenderer({antialias: true});
         var control = new TransformControls(camera, renderer.domElement);
-        // @ts-ignore
-        var myself;
-        // @ts-ignore
-        var guest_1;
-        // @ts-ignore
-        var guest_2;
+
+        var myself : THREE.Object3D;
+        var guest_1 : THREE.Object3D;
+        var guest_2 : THREE.Object3D;
 
         // create an AudioListener
         var omniListener = new THREE.AudioListener();
@@ -96,7 +94,6 @@ class App extends Component {
             camera.position.set(1000, 500, 1000);
             camera.lookAt(0, 200, 0);
 
-
             // add the (omni-directional) sound to the camera
             camera.add(omniSound);
 
@@ -158,11 +155,9 @@ class App extends Component {
 
                     case 82: // R
                         if (control.enabled === true) {
-                            // @ts-ignore
                             myself.rotation.y += Math.PI / 8;
                         } else {
                             control.enabled = true;
-                            // @ts-ignore
                             myself.rotation.y += Math.PI / 8;
                             control.enabled = false;
                         }
@@ -487,12 +482,7 @@ class App extends Component {
                     // @ts-ignore
                     audioElement.volume = 0;
 
-                    // @ts-ignore
                     scene.remove(guest_1);
-                    // @ts-ignore
-                    //        guest_1.geometry.dispose();
-                    // @ts-ignore
-                    //        guest_1.material.dispose();
                 }
             }
 
@@ -521,12 +511,7 @@ class App extends Component {
                     // @ts-ignore
                     audioElement.volume = 0;
 
-                    // @ts-ignore
                     scene.remove(guest_2);
-                    // @ts-ignore
-                    //       guest_2.geometry.dispose();
-                    // @ts-ignore
-                    //       guest_2.material.dispose();
                 }
             }
         }
@@ -541,7 +526,6 @@ class App extends Component {
             remove_button_1.disabled = false;
 
             var listener = new THREE.AudioListener();
-            // @ts-ignore
             myself.add(listener);
 
             guest_1 = makePerson("Joel", "blue", false);
@@ -583,7 +567,6 @@ class App extends Component {
             remove_button_2.disabled = false;
 
             var listener = new THREE.AudioListener();
-            // @ts-ignore
             myself.add(listener);
 
             guest_2 = makePerson("FredrikDa", "green", false);
@@ -663,7 +646,7 @@ class App extends Component {
 
             let audioLoader = new THREE.AudioLoader();
             audioLoader.setCrossOrigin("anonymous");
-            audioLoader.load('sounds/two_tone_doorbell.mp3', function (buffer) {
+            audioLoader.load("/sounds/two_tone_doorbell.mp3", function (buffer) {
                 omniSound.setBuffer(buffer);
                 omniSound.setRefDistance(20);
                 omniSound.setVolume(0.8);
@@ -673,10 +656,10 @@ class App extends Component {
 
         function playClosingDoorSound() {
             var audioLoader = new THREE.AudioLoader();
-            audioLoader.load('sounds/door_close.mp3', function (buffer) {
+            audioLoader.load("/sounds/door_close.mp3", function (buffer) {
                 omniSound.setBuffer(buffer);
                 omniSound.setRefDistance(20);
-                omniSound.setVolume(0.5);
+                omniSound.setVolume(0.8);
                 omniSound.play();
             });
         }
