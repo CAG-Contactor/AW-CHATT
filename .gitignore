@@ -23,4 +23,7 @@
 /aw-chatt-frontend/yarn-debug.log*
 /aw-chatt-frontend/yarn-error.log*
 
-/.idea/
+**/.idea
+/my-app/.idea/
+/my-app/node_modules/
+/my-app/.idea/
