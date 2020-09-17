@@ -1,8 +1,7 @@
 import React, {createContext, useState} from 'react';
 
-import {Layout, Menu, Breadcrumb, Form, Button} from 'antd';
+import {Layout, Menu, Checkbox, Form, Button} from 'antd';
 import {UserOutlined, LaptopOutlined, NotificationOutlined} from '@ant-design/icons';
-import {Checkbox} from 'antd';
 import {Input} from 'antd';
 import 'antd/dist/antd.css';
 import CubeExample from './example-cube/CubeExample';
@@ -43,7 +42,7 @@ function Firstpage() {
         console.log('Success:', values);
 
        // awatarList.push({"name": values.name, "x": values.x, "z": values.z, "color": values.color, "isYou": false});
-       setAwatarList(awatarList.concat({"name": values.name, "x": values.x, "z": values.z, "color": values.color, "isYou": false}));
+       setAwatarList(awatarList.concat({"name": values.name, "x": values.x, "z": values.z, "color": values.color, "isYou": values.isYou}));
 
         console.log('awatarList:', awatarList);
 
@@ -73,7 +72,7 @@ function Firstpage() {
                             <Checkbox onChange={() => toggleShowCube(!showCube)}>Show Cube</Checkbox>
                             <Form
                                 name="basic"
-                                initialValues={{ remember: true }}
+                                initialValues={{ isYou: false }}
                                 onFinish={onFinish}
                             >
                                 <Form.Item
@@ -103,6 +102,9 @@ function Firstpage() {
                                     rules={[{required: true, message: 'Please input your z!'}]}
                                 >
                                     <Input/>
+                                </Form.Item>
+                                <Form.Item name="isYou" valuePropName="checked">
+                                    <Checkbox>Is myself?</Checkbox>
                                 </Form.Item>
                                 <Form.Item>
                                     <Button type="primary" htmlType="submit">
