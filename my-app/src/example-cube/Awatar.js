@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useThree } from '../ThreeJSManager/';
 
 const Awatar = props => {
-  const { x= 0, z= 0, isYou=true, name="Who", h = 20, w = 20, d = 50, color = 0x00ff00 } = props;
+  const { x= 0, z= 0, isYou=true, name="Who", color = 0x00ff00 } = props;
 
     const bodyRadiusTop = 6;
     const bodyRadiusBottom = 3;
@@ -28,14 +28,10 @@ const Awatar = props => {
 
   const setup = context => {
     const { scene } = context;
-    const cubegeometry = new THREE.BoxGeometry(h, w, d);
-    const cubematerial = new THREE.MeshPhongMaterial({ color });
-  //  const cube = new THREE.Mesh(cubegeometry, cubematerial);
+    const cube = makePerson(name, color, isYou);
 
-    const cube = makePerson(name, color, isYou)
-
-      cube.castShadow = true;
-    cube.position.y = 50;
+    cube.castShadow = true;
+    cube.position.y = 0;
     cube.position.x = x;
     cube.position.z = z;
     scene.add(cube);
@@ -130,11 +126,6 @@ const Awatar = props => {
         nose.rotation.x = Math.PI / 2;
 
         if (isMyself) {
-            // This is needed with my headphones to get audio Left/Right correct. I really dont understand why.
-            nose.position.y = bodyHeight + headRadius * 1.1;
-            nose.position.z = -headRadius;
-            nose.rotation.x = Math.PI * 3 / 2;
-
             // Add yellow saphire over your own avatar
             root.add(meConeUpper);
             root.add(meConeLower);
@@ -148,8 +139,7 @@ const Awatar = props => {
             label.position.y = bodyHeight + headRadius * 4;
             label.position.z = 0;
 
-            // if units are meters then 0.01 here makes size
-            // of the label into centimeters.
+            // Do some scaling
             const labelBaseScale = 0.1;
             label.scale.x = canvas.width * labelBaseScale;
             label.scale.y = canvas.height * labelBaseScale;
@@ -159,7 +149,7 @@ const Awatar = props => {
     }
 
 
-  const { getEntity, timer } = useThree(setup);
+ useThree(setup);
 
 /*
   useEffect(

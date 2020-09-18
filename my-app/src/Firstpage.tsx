@@ -25,8 +25,6 @@ function Firstpage() {
     const [showCube, toggleShowCube] = useState(true);
     const [awatarList, setAwatarList] = useState <AwatarProps[]>([]);
 
-
-
    //  setAwatarList(awatarList.concat([{"x": 100, "z": 100, "color": "00ff00", "name": "Joel", "isYou": true},
      //    {"x": -100, "z": -100, "color": "129292", "name": "FredrikDa", "isYou": false},
        //  {"x": -150, "z": -150, "color": "ef0092", "name": "Henrik", "isYou": false}]));
@@ -44,16 +42,28 @@ function Firstpage() {
        // awatarList.push({"name": values.name, "x": values.x, "z": values.z, "color": values.color, "isYou": false});
        setAwatarList(awatarList.concat({"name": values.name, "x": values.x, "z": values.z, "color": values.color, "isYou": values.isYou}));
 
-        console.log('awatarList:', awatarList);
+    };
+
+    const emptyByName = (values: AwatarProps) => {
+        console.log('emptyByName:', values);
+
+        let newAwatarList;
+
+        newAwatarList = awatarList.filter(function(item) {
+            return item.name !== values.name
+        });
+
+        setAwatarList( new Array());
+        setAwatarList(newAwatarList);
 
     };
+
 
     const emptyList = () => {
         console.log('emptyList pressed ');
 
         // awatarList.push({"name": values.name, "x": values.x, "z": values.z, "color": values.color, "isYou": false});
         setAwatarList( new Array());
-
 
     };
 
@@ -112,8 +122,30 @@ function Firstpage() {
                                     </Button>
                                 </Form.Item>
                             </Form>
+                            <hr />
+                            <p />
+                            <Form
+                                name="basic"
+                                initialValues={{ isYou: false }}
+                                onFinish={emptyByName}
+                            >
+                                <Form.Item
+                                    label={"Name"}
+                                    name="name"
+                                    rules={[{required: true, message: 'Please input your name!'}]}
+                                >
+                                    <Input/>
+                                </Form.Item>
+                                <Form.Item>
+                                    <Button type="primary" htmlType="submit">
+                                        Delete
+                                    </Button>
+                                </Form.Item>
+                            </Form>
+                            <hr />
+                            <p />
                             <Button onClick={emptyList}>
-                                Delete
+                                Delete All
                             </Button>
                         </Sider>
                         <Content style={{padding: '0 24px', minHeight: 280}}>
