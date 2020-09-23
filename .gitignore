@@ -17,13 +17,17 @@
 /aw-chatt-frontend/.env.development.local
 /aw-chatt-frontend/.env.test.local
 /aw-chatt-frontend/.env.production.local
-**/*.iml
+
 
 /aw-chatt-frontend/npm-debug.log*
 /aw-chatt-frontend/yarn-debug.log*
 /aw-chatt-frontend/yarn-error.log*
 
-**/.idea
+**/*.iml
+**/*.idea
+**/target
+**/out
+
 /my-app/.idea/
 /my-app/node_modules/
 /my-app/.idea/
