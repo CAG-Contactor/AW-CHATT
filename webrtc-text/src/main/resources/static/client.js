@@ -54,6 +54,16 @@ function initialize() {
         }
     };
 
+    // BEGIN: Added to the Baeldung example to make it work
+    // https://github.com/eugenp/tutorials/tree/master/webrtc
+    peerConnection.ondatachannel = function(event) {
+        var receiveChannel = event.channel;
+        receiveChannel.onmessage = function(event) {
+            console.log("peerConnection message:", event.data);
+        };
+    };
+    // END: Added to the Baeldung example to make it work
+
     // creating data channel
     dataChannel = peerConnection.createDataChannel("dataChannel", {
         reliable : true
@@ -63,10 +73,12 @@ function initialize() {
         console.log("Error occured on datachannel:", error);
     };
 
+    // BEGIN: This can be removed as is has been replaced by the code above
     // when we receive a message from the other peer, printing it on the console
-    dataChannel.onmessage = function(event) {
-        console.log("message:", event.data);
-    };
+    // dataChannel.onmessage = function(event) {
+    //     console.log("message:", event.data);
+    // };
+    // END: This can be removed as is has been replaced by the code above
 
     dataChannel.onclose = function() {
         console.log("data channel is closed");
