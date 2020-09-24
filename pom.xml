@@ -23,6 +23,7 @@
 
     <modules>
         <module>webrtc-text</module>
+        <module>aw-chat-backend</module>
     </modules>
 
 </project>

@@ -1,0 +1,58 @@
+{
+  bookById(id:"book-3"){
+    id
+    name
+    pageCount
+    author{
+      firstName
+      lastName
+    }
+  }
+}
+{
+  allUsers{
+    id
+    name
+    color
+    position {
+      x_pos
+      y_pos
+    }
+  }
+}
+
+{
+  allPositions{
+    x_pos
+    y_pos
+  }
+}
+
+{
+  userByName(name: "Fredrik"){
+    id
+    name
+    color
+
+  }
+}
+
+}
+
+mutation {
+  addUser(name:"Nisse", color:"blue"){
+    id
+    name
+    color
+  }
+}
+
+mutation {
+  updatePosition(name:"Nisse", xPos:200, yPos:-20){
+    name
+    position {
+      x_pos
+      y_pos
+    }
+  }
+}

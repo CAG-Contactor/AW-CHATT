@@ -1,0 +1,56 @@
+#type Query{
+#  userDataByName(name:String): User
+#}
+#
+#type User {
+# name:String
+#  color: String
+#}
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Subscription{
+  getAllUsers: [User]
+}
+
+type Mutation{
+  addUser(name:String, color: String):User
+  updatePosition(name:String, xPos: Int, yPos: Int): User
+}
+
+type Query {
+  bookById(id: ID): Book
+  userByName(name:String): User
+  allUsers: [User]
+  allPositions: [UserPosition]
+}
+
+
+type Book {
+  id: ID
+  name: String
+  pageCount: Int
+  author: Author
+}
+
+type Author {
+  id: ID
+  firstName: String
+  lastName: String
+}
+
+type User {
+  id: ID
+  name: String
+  color: String
+  create_time: Int
+  position: UserPosition
+}
+
+type UserPosition{
+  x_pos: Int
+  y_pos: Int
+  updated: Int
+}
