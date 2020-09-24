@@ -51,15 +51,7 @@ public class SocketHandler extends TextWebSocketHandler {
             System.out.println("webSocketSession: " + webSocketSession);
             System.out.println("sessionIdHashMap.get(toName): " + sessionIdHashMap.get(toName));
 
-//            if (webSocketSession.isOpen() && !session.getId().equals(webSocketSession.getId())) {
             if (webSocketSession.isOpen() && webSocketSession.getId().equals(sessionIdHashMap.get(toName))) {
-
-//                if (message.getPayload().contains("\"event\":\"offer\"")) {
-//                    System.out.println("message offer: " + message.getPayload());
-//                }
-//                if (message.getPayload().contains("\"event\":\"answer\"")) {
-//                    System.out.println("message answer: " + message.getPayload());
-//                }
                 webSocketSession.sendMessage(message);
                 System.out.println("SEND MESSAGE: " + message.getPayload());
                 System.out.println("session.getId(): " + session.getId());

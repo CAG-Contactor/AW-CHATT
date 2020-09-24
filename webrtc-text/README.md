@@ -32,13 +32,11 @@ In this version more browsers can be created. The first
 define its name in the first row and all (known) peers' 
 names in the second row. 
 
-The rest of the browsers define each peer name and the name 
-of the first as peer on the second row. NOTE currently one
-peer can be defined for the rest.
 
 All browser must be initialized with the 
 "Initialize" button, and then "Create Offer" should be 
-pressed on the first browser.
+pressed on the first browser, and on the rest of the browsers
+except the last one.
 
 
 ### Relevant Articles:

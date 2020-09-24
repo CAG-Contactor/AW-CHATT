@@ -16,19 +16,18 @@ conn.onmessage = function(msg) {
     console.log("DATA", data);
     console.log("fromName", fromName);
     console.log("toName", toName);
-    console.log("nameInput.value", nameInput.value);
 
     switch (content.event) {
     // when somebody wants to call us
     case "offer":
-        handleOffer(data, fromName, nameInput.value);
+        handleOffer(data, fromName, toName);
         break;
     case "answer":
         handleAnswer(data, fromName, toName);
         break;
     // when a remote peer sends an ice candidate to us
     case "candidate":
-        handleCandidate(data, fromName, nameInput.value);
+        handleCandidate(data, fromName, toName);
         break;
     default:
         break;
@@ -119,6 +118,8 @@ function createOffer() {
     for (index = 0; index < peerArray.length; index++) {
         var status = peerConnection[index].iceConnectionState;
         console.log("peerConnection[" + index + "] status: " + status);
+        var status2 = dataChannel[index].readyState;
+        console.log("dataChannel[" + index + "] readyState: " + status2);
 
         if (status === "new") {
             // We need to declare these before being used in the
@@ -163,6 +164,8 @@ function handleOffer(offer, fromName, toName) {
         }, function (error) {
             alert("Error creating an answer");
         });
+    } else {
+        console.log("offer to somebody else. THIS SHOULD NOT HAPPEN. toName = " + toName);
     }
 };
 
@@ -176,6 +179,9 @@ function handleCandidate(candidate, fromName, toName) {
     if (toName === nameInput.value) {
         peerIndex = peerArray.indexOf(fromName);
         peerConnection[peerIndex].addIceCandidate(new RTCIceCandidate(candidate));
+    }
+    else {
+        console.log("candidate message to somebody else. THIS SHOULD NOT HAPPEN. toName = " + toName);
     }
 };
 
@@ -194,7 +200,11 @@ function sendMessage() {
     console.log("dataChannel list:", dataChannel);
 
     for (index = 0; index < dataChannel.length; index++) {
-        dataChannel[index].send(input.value);
+        var status = dataChannel[index].readyState;
+        console.log("dataChannel[" + index + "] readyState: " + status);
+        if (status === "open") {
+            dataChannel[index].send(input.value);
+        }
     }
     input.value = "";
 }
