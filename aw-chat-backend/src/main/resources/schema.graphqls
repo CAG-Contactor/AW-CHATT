@@ -16,30 +16,16 @@ type Subscription{
 }
 
 type Mutation{
-  addUser(name:String, color: String):User
-  updatePosition(name:String, xPos: Int, yPos: Int): User
+  addUser(name:String!, color: String!):User
+  updatePosition(name:String!, xPos: Int!, yPos: Int!): User
 }
 
 type Query {
-  bookById(id: ID): Book
   userByName(name:String): User
   allUsers: [User]
   allPositions: [UserPosition]
 }
 
-
-type Book {
-  id: ID
-  name: String
-  pageCount: Int
-  author: Author
-}
-
-type Author {
-  id: ID
-  firstName: String
-  lastName: String
-}
 
 type User {
   id: ID
@@ -50,7 +36,7 @@ type User {
 }
 
 type UserPosition{
-  x_pos: Int
-  y_pos: Int
+  xPos: Int
+  yPos: Int
   updated: Int
 }

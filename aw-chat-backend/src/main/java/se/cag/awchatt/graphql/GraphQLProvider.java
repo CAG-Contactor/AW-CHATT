@@ -53,13 +53,9 @@ public class GraphQLProvider {
     private RuntimeWiring buildWiring() {
         return RuntimeWiring.newRuntimeWiring()
                 .type(newTypeWiring("Query")
-                        .dataFetcher("bookById", graphQLDataFetchers.getBookByIdDataFetcher())
                         .dataFetcher("userByName", graphQLDataFetchers.getUserByIdFetcher())
                         .dataFetcher("allUsers", graphQLDataFetchers.getAllUsers())
                         .dataFetcher("allPositions", graphQLDataFetchers.getAllPositions()))
-                .type(newTypeWiring("Book")
-                        .dataFetcher("author", graphQLDataFetchers.getAuthorDataFetcher())
-                        .dataFetcher("pageCount", graphQLDataFetchers.getPageCountDataFetcher()))
                 .type(newTypeWiring("Mutation")
                         .dataFetcher("addUser", graphQLDataFetchers.addUser())
                         .dataFetcher("updatePosition", graphQLDataFetchers.updatePosition()))

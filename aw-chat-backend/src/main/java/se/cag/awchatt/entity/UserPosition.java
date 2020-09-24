@@ -14,13 +14,13 @@ public class UserPosition {
     @Id
     @GeneratedValue
     private Integer id;
-    private Integer x_pos;
-    private Integer y_pos;
+    private Integer xPos;
+    private Integer yPos;
     private Timestamp updated;
 
     public UserPosition(Integer xPos, Integer yPos) {
-        this.x_pos = xPos;
-        this.y_pos = yPos;
+        this.xPos = xPos;
+        this.yPos = yPos;
         this.updated = new Timestamp(System.currentTimeMillis());
     }
 }
