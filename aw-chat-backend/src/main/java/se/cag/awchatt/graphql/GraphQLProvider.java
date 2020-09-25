@@ -58,6 +58,7 @@ public class GraphQLProvider {
                         .dataFetcher("allPositions", graphQLDataFetchers.getAllPositions()))
                 .type(newTypeWiring("Mutation")
                         .dataFetcher("addUser", graphQLDataFetchers.addUser())
+                        .dataFetcher("removeUser", graphQLDataFetchers.removeUser())
                         .dataFetcher("updatePosition", graphQLDataFetchers.updatePosition()))
                 .build();
     }

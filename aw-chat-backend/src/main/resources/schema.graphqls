@@ -16,7 +16,8 @@ type Subscription{
 }
 
 type Mutation{
-  addUser(name:String!, color: String!):User
+  addUser(name:String!, color: String!): User
+  removeUser(name:String!): Boolean
   updatePosition(name:String!, xPos: Int!, yPos: Int!): User
 }
 

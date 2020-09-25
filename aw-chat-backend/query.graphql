@@ -1,5 +1,4 @@
-{
-
+query allusers{
   allUsers{
     id
     name
@@ -11,35 +10,35 @@
   }
 }
 
-{
+query allPositions{
   allPositions{
     xPos
     yPos
   }
 }
 
-{
-  userByName(name: "Fredrik"){
-    id
-    name
-    color
-
-  }
-}
-
-
-mutation {
-  addUser(name:"Nisse", color:"blue"){
+query userByName($name: String){
+  userByName(name:$name){
     id
     name
     color
   }
 }
 
+mutation addUser($name: String!){
+  addUser(name:$name, color:"blue"){
+    id
+    name
+    color
+  }
+}
 
+mutation removeUser($name: String!){
+  removeUser(name:$name)
+}
 
-mutation {
-  updatePosition(name:"Nisse", xPos:200, yPos:-20){
+mutation updatePosition($name: String!){
+  updatePosition(name:$name, xPos:200, yPos:-20){
     name
     position {
       xPos

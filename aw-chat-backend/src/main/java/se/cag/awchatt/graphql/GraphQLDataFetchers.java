@@ -70,4 +70,16 @@ public class GraphQLDataFetchers {
             return userRepo.save(user);
         };
     }
+
+    public DataFetcher removeUser() {
+        return dataFetchingEnvironment -> {
+            String name = dataFetchingEnvironment.getArgument("name");
+            User user = userRepo.findByName(name);
+            if(user == null){
+                return false;
+            }
+            userRepo.delete(user);
+            return true;
+        };
+    }
 }

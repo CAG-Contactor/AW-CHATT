@@ -19,7 +19,7 @@ CREATE TABLE user_position
 CREATE TABLE user
 (
     id          INT AUTO_INCREMENT PRIMARY KEY,
-    name        VARCHAR(256) NOT NULL,
+    name        VARCHAR(256) NOT NULL UNIQUE,
     color       VARCHAR(20),
     position_id INT,
     create_time TIMESTAMP,
