@@ -66,6 +66,17 @@ function Firstpage() {
         setAwatarList( new Array());
 
     };
+    async function getConnectedDevices(type:string) {
+        const d = await navigator.mediaDevices.getUserMedia({ audio: true});
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        console.log("device", devices);
+        return devices.filter(device => device.kind === type)
+    }
+    const videoCameras = getConnectedDevices('audioinput');
+    console.log('audioinput ', videoCameras)
+
+    const videoCameras2 = getConnectedDevices('audiooutput');
+    console.log('audiooutput ', videoCameras2)
 
 
     return (
