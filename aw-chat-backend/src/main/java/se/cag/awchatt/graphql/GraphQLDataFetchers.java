@@ -2,6 +2,8 @@ package se.cag.awchatt.graphql;
 
 import com.google.common.collect.ImmutableMap;
 import graphql.schema.DataFetcher;
+import graphql.schema.DataFetchingEnvironment;
+import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import se.cag.awchatt.entity.User;
@@ -34,6 +36,15 @@ public class GraphQLDataFetchers {
         };
     }
 
+//    public DataFetcher<Publisher<User>> getmy() {
+//       return new DataFetcher<Publisher<User>>() {
+//            @Override
+//            public Publisher<User> get(DataFetchingEnvironment environment) {
+//                Publisher<User> userPublisher = new Publisher<>();
+//
+//            }
+//        };
+//    }
     public DataFetcher addUser() {
         return dataFetchingEnvironment -> {
             String name = dataFetchingEnvironment.getArgument("name");

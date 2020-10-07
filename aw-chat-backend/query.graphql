@@ -10,6 +10,18 @@ query allusers{
   }
 }
 
+subscription allusers{
+  getAllUsers{
+    id
+    name
+    color
+    position {
+      xPos
+      yPos
+    }
+  }
+}
+
 query allPositions{
   allPositions{
     xPos

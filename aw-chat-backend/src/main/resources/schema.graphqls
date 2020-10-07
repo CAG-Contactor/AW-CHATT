@@ -1,19 +1,11 @@
-#type Query{
-#  userDataByName(name:String): User
-#}
-#
-#type User {
-# name:String
-#  color: String
-#}
 schema {
   query: Query
   mutation: Mutation
 }
 
-type Subscription{
-  getAllUsers: [User]
-}
+#type Subscription{
+#  getAllUsers: [User]
+#}
 
 type Mutation{
   addUser(name:String!, color: String!): User
